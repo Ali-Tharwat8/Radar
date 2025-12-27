@@ -1,80 +1,110 @@
-# Radar System Design & Signal Generation Project
+# Pulse Doppler Radar System Simulation
 
-This project involves the design and simulation of a pulsed radar system to detect objects and accurately measure their distance and velocity.
+A comprehensive simulation of a 77 GHz pulse Doppler radar system for target detection, range estimation, and velocity analysis using matched filtering and Doppler processing.
 
-## System Overview
+## Overview
 
-The radar operates at a **77 GHz** carrier frequency, utilizing 2,048 pulses to achieve a high target velocity resolution of under 0.5 m/s.
+This project implements a complete radar signal processing pipeline that simulates automotive radar systems commonly used in Advanced Driver Assistance Systems (ADAS). The simulation demonstrates target detection, range-Doppler mapping, and velocity estimation under realistic conditions including noise.
 
-### Key System Parameters
+## System Parameters
 
-* 
-**Carrier Frequency ():** 77 GHz 
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Carrier Frequency | 77 GHz | Operating frequency (automotive radar band) |
+| PRI (Pulse Repetition Interval) | 2 μs | Time between consecutive pulses |
+| Pulse Width | 4.5 ns | Duration of transmitted pulse |
+| Sampling Points | 1,000,000 | Number of samples in simulation |
+| SNR | -5 dB | Signal-to-Noise Ratio |
+
+## Performance Specifications
+
+The system meets the following requirements:
+
+- **Maximum Unambiguous Range**: 299.8 m (requirement: > 250 m)
+- **Maximum Unambiguous Velocity**: 486.7 m/s (realistic range: -100 to 100 m/s)
+- **Range Resolution**: < 0.75 m
+- **Velocity Resolution**: < 0.5 m/s
+- **Number of Pulses**: 2048
+
+## Features
+
+### A) Signal Generation
+- Pulse radar waveform generation
+- Target scenario simulation with multiple targets
+- Transmitted and received signal visualization
+- Range-time plot generation
+
+### B) Matched Filtering
+- Noise addition to simulate realistic conditions
+- Signal processing under low SNR conditions
+- Pre-filtering signal analysis
+
+### C) Doppler Analysis
+- Velocity estimation using Doppler frequency shift
+- Direction classification (approaching/receding)
+- Doppler spectrum visualization
+- High-accuracy target parameter extraction
+
+### D) Range-Doppler Processing
+- 2D Range-Doppler map generation
+- Simultaneous range and velocity estimation
+- Multi-target detection and separation
+
+## Test Scenario Results
+
+The system was tested with two targets:
+
+| Target | Range | Velocity | Detection Accuracy |
+|--------|-------|----------|-------------------|
+| Target 1 | 50 m | -20 m/s (approaching) | Range: 50.01 m, Velocity: -19.96 m/s |
+| Target 2 | 135 m | +35 m/s (receding) | Range: 135.03 m, Velocity: +35.17 m/s |
+
+**Detection Error**: 
+- Range error: < 0.03 m (< 0.02%)
+- Velocity error: < 0.2 m/s (< 1%)
+
+## Key Formulas
+
+**Maximum Unambiguous Range:**
+```
+R_max = (C × PRI) / 2
+```
+
+**Maximum Unambiguous Velocity:**
+```
+v_max = (C × PRF) / (4 × F_c)
+```
+
+**Range Resolution:**
+```
+ΔR = (C × T_p) / 2
+```
+
+**Velocity Resolution:**
+```
+v_res = λ / (2 × N × PRI)
+```
+
+## Visualizations
+
+The project generates the following plots:
+
+1. **Transmitted/Received Signals**: Time-domain representation of radar pulses
+2. **Range-Time Plot**: Target position over time
+3. **Noisy Received Signal**: Signal characteristics under low SNR
+4. **Doppler Spectrum**: Frequency domain analysis for velocity estimation
+5. **Range-Doppler Map**: 2D visualization of target range and velocity
+
+## Applications
+
+- Automotive radar systems (ADAS, autonomous vehicles)
+- Speed detection and traffic monitoring
+- Range and velocity measurement
+- Multi-target tracking
+- Radar signal processing education
 
 
-* 
-**Pulse Repetition Interval (PRI):** 2 μs 
 
+---
 
-* 
-**Pulse Width ():** 4.5 ns 
-
-
-* 
-**Signal-to-Noise Ratio (SNR):** -5 dB 
-
-
-* 
-**Max Unambiguous Range:** 299.8 m 
-
-
-* 
-**Max Unambiguous Velocity:** 486.7 m/s 
-
-
-
-## Simulation Scenario
-
-The simulation tracks two specific targets moving in opposite directions:
-
-* 
-**Target 1:** Located at **50m**, approaching at **-20 m/s**.
-
-
-* 
-**Target 2:** Located at **135m**, receding at **35 m/s**.
-
-
-
-## Signal Analysis & Results
-
-The system uses Doppler analysis and 2D FFT processing to isolate targets from the noise floor.
-
-* 
-**Range Performance:** Detected Target 1 at 50.01m and Target 2 at 135.03m.
-
-
-* 
-**Velocity Performance:** Estimated Target 1 velocity at -19.96 m/s and Target 2 at 35.17 m/s.
-
-
-* 
-**Visualization:** Range-Doppler maps and spectra provide a clear representation of target power and movement.
-
-
-
-## Project Requirements
-
-| Metric | Requirement | Result |
-| --- | --- | --- |
-| **Target Range Resolution** | < 0.75m | 0.675m 
-
- |
-| **Target Velocity Resolution** | < 0.5m/s | ~0.47m/s 
-
- |
-| **Max Unambiguous Range** | > 250m | 299.8m 
-
- |
-
-**Authors:** Ali Tharwat and Abdulrhamn Jalal.
+*77 GHz Automotive Radar Simulation - Target Detection & Velocity Estimation*
