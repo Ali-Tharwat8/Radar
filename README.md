@@ -102,9 +102,15 @@ The project generates the following plots:
 - Range and velocity measurement
 - Multi-target tracking
 - Radar signal processing education
+ Real-time processing implementation
 
+## Contributors
 
+This project was developed by:
 
----
+- **Abdelrahman Jalal** - https://github.com/abdulrhman-dev
+- **Ali Tharwat** - https://github.com/Ali-Tharwat8
+
+Developed as part of a radar systems course/research project.
 
 *77 GHz Automotive Radar Simulation - Target Detection & Velocity Estimation*
